@@ -1,0 +1,21 @@
+{
+  "nodeId": 256,
+  "canId": 75,
+  "priority1": 2,
+  "priority2": 3,
+  "manufId": 165,
+  "moduleId": 65,
+  "name": "NIGE",
+  "minorVersion": "A",
+  "numEvents": 255,
+  "numEventVariables": 2,
+  "numSupportedNodeVariables": 2,
+  "majorVersion": 2,
+  "consumer": true,
+  "producer": true,
+  "flim": true,
+  "supportsBootloader": false,
+  "interface": 2,
+  "variables": [],
+  "events": {}
+}
