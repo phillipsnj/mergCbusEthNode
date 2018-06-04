@@ -5,7 +5,7 @@ Create a new directory and copy the files to the new directory and install requi
 
 ```npm install```
 
-Edit the nodeConfig.json file with details of your node. The example is setup for a Flim module with 2 node variables and 2 event variables.
+Edit the nodeConfig.json file with details of your node. The example is setup for a Flim module with 2 node variables and 2 event variables. Edit the main program file to set the NET_PORT and NET_ADDRESS to you cbus ethernet connection.
 
 To run for the first time use the parameter --setup to emulate a module being put in Flim mode. This will enable the FCU to set it up.
 
