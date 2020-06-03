@@ -9,8 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "jsonfile": "^4.0.0",
-    "mergcbusnode": "^1.0.6",
-    "mergethnode": "0.0.1"
+    "jsonfile": "^4.0.0"
   }
 }

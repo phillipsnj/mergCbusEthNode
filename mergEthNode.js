@@ -1,7 +1,7 @@
 
 const net = require('net')
 const jsonfile = require('jsonfile')
-const mergCbus = require('mergcbusnode')
+const mergCbus = require('./mergCbusNode')
 const argv = require('minimist')(process.argv.slice(2))
 //const mergCbus = require('../mergCbusNode/mergAdminNode.js')
 //import {mergCbus, cbusMessage} from '../mergCbus'
@@ -22,7 +22,7 @@ class mergEthNode extends mergCbus.cbusNode {
             const outMsg = data.toString().split(";");
             for (var i = 0; i < outMsg.length - 1; i++) {
                 let msg = new mergCbus.cbusMessage(outMsg[i]);
-                console.log(`Message : ${msg.opCode()} ${msg.nodeId()} ${msg.eventId()} ${msg.messageOutput()} ${msg.header()}`);
+                //console.log(`Message : ${msg.opCode()} ${msg.nodeId()} ${msg.eventId()} ${msg.messageOutput()} ${msg.header()}`);
                 this.action_message(msg)
                /*if (this.actions[msg.opCode()]) {
                     this.actions[msg.opCode()](msg);

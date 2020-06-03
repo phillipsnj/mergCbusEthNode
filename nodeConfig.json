@@ -1,5 +1,5 @@
 {
-  "nodeId": 256,
+  "nodeId": 200,
   "canId": 75,
   "priority1": 2,
   "priority2": 3,
@@ -16,6 +16,16 @@
   "flim": true,
   "supportsBootloader": false,
   "interface": 2,
-  "variables": [],
-  "events": {}
+  "variables": [
+    null,
+    1,
+    3
+  ],
+  "events": {
+    "0102001D": [
+      null,
+      1,
+      3
+    ]
+  }
 }

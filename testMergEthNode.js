@@ -1,12 +1,12 @@
 'use strict';
 
-const pcCbus = require('mergEthNode')
+const pcCbus = require('./mergEthNode')
 //const pcCbus = require('../mergEthNode/mergEthNode')
 
 const file = './nodeConfig.json'
 
 const NET_PORT = 5550;
-const NET_ADDRESS = "mergDev0";
+const NET_ADDRESS = "192.168.8.123";
 
 let node = new pcCbus.mergEthNode(file,NET_ADDRESS,NET_PORT);
 
