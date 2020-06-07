@@ -8,8 +8,8 @@
   "name": "NIGE",
   "minorVersion": "A",
   "numEvents": 255,
-  "numEventVariables": 2,
-  "numSupportedNodeVariables": 2,
+  "numEventVariables": 8,
+  "numSupportedNodeVariables": 8,
   "majorVersion": 2,
   "consumer": true,
   "producer": true,
@@ -18,14 +18,26 @@
   "interface": 2,
   "variables": [
     null,
+    25,
+    3,
+    158,
+    2,
     1,
-    2
+    2,
+    2,
+    0
   ],
   "events": {
     "0102001D": [
       null,
-      1,
-      3
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
     ]
   }
 }

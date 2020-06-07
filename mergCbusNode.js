@@ -56,8 +56,8 @@ class cbusNode extends EventEmitter {
                 this.cbusSend(this.PNN())
             },
             '10': (msg) => {
-                console.log(`OpCode 10 : ${this.TEACH_MODE ? 'TRUE' : 'FALSE'}`)
-                console.log(`Test ${this.nodeId}`)
+                //console.log(`OpCode 10 : ${this.TEACH_MODE ? 'TRUE' : 'FALSE'}`)
+                //console.log(`Test ${this.nodeId}`)
                 if (this.TEACH_MODE) {
                     console.log(`PNN : ${this.PARAMS()}`)
                     this.cbusSend(this.PARAMS())
@@ -74,48 +74,54 @@ class cbusNode extends EventEmitter {
                 }
             },
             '53': (msg) => {
-                console.log('NNLRN :  ' + msg.nodeId());
+
                 if (msg.nodeId() == this.nodeId) {
+                    console.log('NNLRN :  ' + msg.nodeId());
                     this.TEACH_MODE = true
                     this.saveConfig()
                 }
             },
             '54': (msg) => {
-                console.log('NNULN :  ' + msg.nodeId());
+
                 if (msg.nodeId() == this.nodeId) {
+                    console.log('NNULN :  ' + msg.nodeId());
                     this.TEACH_MODE = false
                     this.saveConfig()
                 }
             },
             '55': (msg) => {
-                console.log('NNCLR :  ' + msg.nodeId());
+
                 if (msg.nodeId() == this.nodeId && this.TEACH_MODE) {
+                    console.log('NNCLR :  ' + msg.nodeId());
                     this.events = {}
                     this.saveConfig()
                 }
             },
             '57': (msg) => {
-                console.log('NERD :  ' + msg.nodeId());
+
                 if (msg.nodeId() == this.nodeId) {
+                    console.log('NERD :  ' + msg.nodeId());
                     this.cbusSend(this.ENRSP())
                 }
             },
             '58': (msg) => {
-                console.log('RQEVN :  ' + msg.nodeId());
                 if (msg.nodeId() == this.nodeId) {
+                    console.log('RQEVN :  ' + msg.nodeId());
                     this.cbusSend(this.NUMEV())
                 }
             },
             'D2': (msg) => {
-                console.log('EVLRN :  ' + msg.messageOutput())
+
                 if (this.TEACH_MODE) {
+                    console.log('EVLRN :  ' + msg.messageOutput())
                     this.teachEvent(msg.nodeId(), msg.eventId(), msg.getInt(17,2), msg.getInt(19,2));
                     this.saveConfig()
                 }
             },
             '11': (msg) => {
-                console.log('NAME :  ' + this.NAME());
+
                 if (this.TEACH_MODE) {
+                    console.log('NAME :  ' + this.NAME());
                     this.cbusSend(this.NAME())
                 }
             },
@@ -132,14 +138,17 @@ class cbusNode extends EventEmitter {
                 }
             },
             '96': (msg) => {
-                console.log('NVSET :  ');
-                this.variables[msg.index()] = msg.value()
-                this.cbusSend(this.WRACK())
-                this.saveConfig()
+                if (msg.nodeId() == this.nodeId) {
+                    console.log('NVSET :  ');
+                    this.variables[msg.index()] = msg.value()
+                    this.cbusSend(this.WRACK())
+                    this.saveConfig()
+                }
             },
             '9C': (msg) => {
-                console.log(`REVAL : ${msg.messageOutput()} - ${msg.nodeId()} , ${msg.getInt(13,2)} , ${msg.getInt(15,2)}`);
+
                 if (msg.nodeId() == this.nodeId) {
+                    console.log(`REVAL : ${msg.messageOutput()} - ${msg.nodeId()} , ${msg.getInt(13,2)} , ${msg.getInt(15,2)}`);
                     this.emit('cbus', this.NEVAL(msg.getInt(13,2), msg.getInt(15,2)))
                     this.cbusSend(this.NEVAL(msg.getInt(13,2), msg.getInt(15,2)))
                 }
