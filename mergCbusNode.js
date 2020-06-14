@@ -316,7 +316,11 @@ class cbusNode extends EventEmitter {
     NEVAL(eventIndex, eventNo) {
         const eventId = Object.keys(this.events)[eventIndex-1]
         console.log(`NEVAL ${eventId} : ${eventIndex} : ${eventNo} -- ${Object.keys(this.events)}`)
-        return this.header + 'B5' + pad(this.nodeId.toString(16), 4) + pad(eventIndex.toString(16), 2) + pad(eventNo.toString(16), 2)+ pad(this.events[eventId][eventNo].toString(16), 2) + ';'
+        if (this.events[eventId][eventNo]) {
+            return this.header + 'B5' + pad(this.nodeId.toString(16), 4) + pad(eventIndex.toString(16), 2) + pad(eventNo.toString(16), 2) + pad(this.events[eventId][eventNo].toString(16), 2) + ';'
+        } else {
+            return this.header + 'B5' + pad(this.nodeId.toString(16), 4) + pad(eventIndex.toString(16), 2) + pad(eventNo.toString(16), 2) + pad('0', 2) + ';'
+        }
     }
 
     ENRSP() {
